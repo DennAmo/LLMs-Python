@@ -20,13 +20,14 @@ llm = Llama(
 )
 
 # Contexte par défaut contenant le nom de l'utilisateur
+
 default_context = (
     "[CONTEXT] Hi you are an Artificial Intelligence, and try to chat with me if you want to.\n"
     "My name is Dennis, we are in a chatbox through VisualStudioCode terminal, i am here for chat and ask question. "
     "The text below is our last conversation history, including timestamps to indicate when each message was sent. Use it as a memory[CONTEXT]\n"
-    "Dennis=[User]\n"
+    "Dennis=[User]\n" 
     "Artificial Intelligence=[You]\n"
-)
+)  # [User] est l'utilisateur [You] l'I.A
 
 # Paramètres de génération
 generation_kwargs = {
