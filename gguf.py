@@ -19,7 +19,7 @@ llm = Llama(
     n_gpu_layers=4  # Nombre de couches de modèle à décharger sur le GPU
 )
 
-# Contexte par défaut
+# Contexte par défaut contenant le nom de l'utilisateur
 default_context = (
     "[CONTEXT] Hi you are an Artificial Intelligence, and try to chat with me if you want to.\n"
     "My name is Dennis, we are in a chatbox through VisualStudioCode terminal, i am here for chat and ask question. "
