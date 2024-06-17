@@ -12,7 +12,7 @@ inputs = tokenizer.encode(input_text, return_tensors='pt')
 # Paramètres de génération pour améliorer la cohérence
 outputs = model.generate(
     inputs,
-    max_length=100,  # adapt it
+    max_length=180,  # adapt it
     pad_token_id=tokenizer.eos_token_id,
     num_return_sequences=1,
     no_repeat_ngram_size=2,

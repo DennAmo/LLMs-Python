@@ -10,8 +10,8 @@ tokenizer = GPT2Tokenizer.from_pretrained(output_dir)
 # Assurer que le `pad_token_id` est défini
 tokenizer.pad_token = tokenizer.eos_token
 
-# Préparer le texte d'entrée avec plus de contexte
-input_text = """
+# Préparer le texte d'entrée avec plus de contexte to adapt
+input_text = """  
 User: Hi there!\n
 A.I:\n
 """
@@ -22,7 +22,7 @@ attention_mask = inputs.ne(tokenizer.pad_token_id).long()
 outputs = model.generate(
     inputs, 
     attention_mask=attention_mask,
-    max_length=250, 
+    max_length=250,   # adapt it
     num_return_sequences=1, 
     no_repeat_ngram_size=2, 
     temperature=0.7, 
