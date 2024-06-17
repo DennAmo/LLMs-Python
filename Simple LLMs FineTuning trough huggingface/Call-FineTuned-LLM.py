@@ -27,7 +27,7 @@ outputs = model.generate(
     no_repeat_ngram_size=2, 
     temperature=0.7, 
     top_p=0.9, 
-    top_k=50, 
+    top_k=1, 
     do_sample=True,
     pad_token_id=tokenizer.pad_token_id  # Définir explicitement le pad_token_id
 )

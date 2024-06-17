@@ -20,7 +20,7 @@ def batch_translate(texts, batch_size=10):
 print("Reading the file...")
 
 # Lire le fichier texte
-file_path = 'Filtered_Important_Conversations_Herika_Amo.txt'
+file_path = 'Filtered_Important_Conversations_Herika_Amo.txt'  # adapt it
 with open(file_path, 'r', encoding='utf-8') as file:
     lines = file.readlines()
 
@@ -28,7 +28,7 @@ print(f"Read {len(lines)} lines from the file.")
 
 # Initialiser les variables pour le JSON
 conversations = []
-current_conversation = {"Amo": "", "Herika": ""}
+current_conversation = {"Amo": "", "Herika": ""}  # adapt it
 current_speaker = None
 
 # Parcourir les lignes du fichier

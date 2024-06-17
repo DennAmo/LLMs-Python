@@ -1,0 +1,39 @@
+from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
+from datasets import load_dataset
+
+# Charger le modèle et le tokenizer depuis Hugging Face
+model_name = 'openai-community/gpt2' #
+model = GPT2LMHeadModel.from_pretrained(model_name)
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+
+# Charger tes données pour le fine-tuning (exemple avec wikitext-2)
+dataset = load_dataset('wikitext', 'wikitext-2-raw-v1')
+
+# Préparer les données pour l'entraînement
+def tokenize_function(examples):
+    return tokenizer(examples['text'], padding='max_length', truncation=True, max_length=512)
+
+tokenized_datasets = dataset.map(tokenize_function, batched=True)
+
+# Configurer les paramètres d'entraînement
+training_args = TrainingArguments(
+    output_dir='./results',
+    evaluation_strategy="epoch",
+    learning_rate=2e-5,
+    per_device_train_batch_size=4,  # Ajuster la taille du batch en fonction de ta VRAM disponible
+    per_device_eval_batch_size=4,
+    num_train_epochs=3,
+    weight_decay=0.01,
+    fp16=True,  # Activer l'entraînement en 16 bits flottants si supporté
+)
+
+# Créer un Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_datasets['train'],
+    eval_dataset=tokenized_datasets['validation'],
+)
+
+# Entraîner le modèle
+trainer.train()

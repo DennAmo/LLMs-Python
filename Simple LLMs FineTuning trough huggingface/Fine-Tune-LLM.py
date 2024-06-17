@@ -18,11 +18,11 @@ print(f"Total conversations: {len(conversations)}")  # Vérifier le nombre total
 dataset = Dataset.from_dict({"text": conversations})
 
 # Charger le tokenizer
-tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")
+tokenizer = GPT2Tokenizer.from_pretrained("openai-community/gpt2")  # adapt it
 tokenizer.pad_token = tokenizer.eos_token
 
 # Ajouter le `pad_token` au modèle
-model = GPT2LMHeadModel.from_pretrained("openai-community/gpt2")
+model = GPT2LMHeadModel.from_pretrained("openai-community/gpt2")  # adapt it
 model.resize_token_embeddings(len(tokenizer))
 
 # Tokeniser le dataset
@@ -57,7 +57,7 @@ trainer = Trainer(
 trainer.train()
 
 # Sauvegarder le modèle fine-tuné
-output_dir = './fine_tuned_model'
+output_dir = './fine_tuned_model' # Sera crée dans le meme dossier
 model.save_pretrained(output_dir)
 tokenizer.save_pretrained(output_dir)
 
